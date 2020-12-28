@@ -41,6 +41,8 @@ Go-Micro:https://github.com/micro/go-micro
    1. 服务端:使用go-micro创建服务端Demo,并注册到nacos
 
       ```go
+      //命名空间
+   nacos.SetNamespaceId("9d5d3937-27a6-45a4-b300-e30dc3656a90")
          registry := nacos.NewRegistry(func(options *registry.Options) {
          		options.Addrs = addrs
          })
@@ -62,6 +64,8 @@ Go-Micro:https://github.com/micro/go-micro
    1. 客户端:使用go-micro创建客户端Demo,注册到nacos.
 
       ```go
+      //命名空间
+   nacos.SetNamespaceId("9d5d3937-27a6-45a4-b300-e30dc3656a90")
       	r := nacos.NewRegistry(func(options *registry.Options) {
       		options.Addrs = addrs
       	})
