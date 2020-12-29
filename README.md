@@ -4,6 +4,9 @@
 
 使用nacos 命名空间,使用http访问微服务
 
+HTTP 微服务 地址  https://github.com/foxiswho/go-micro-echo-demo
+
+
 Nacos:https://nacos.io/en-us/
 
 Go-Micro:https://github.com/micro/go-micro

@@ -50,6 +50,7 @@ func main() {
 	service := micro.NewService(
 		micro.Name("my.micro.service.client"),
 		micro.Registry(r))
+	// HTTP 服务  https://github.com/foxiswho/go-micro-echo-demo 下载他并执行
 	//普通HTTP
 	demoHttpGet(r)
 	//封装 HTTP
