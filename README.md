@@ -2,6 +2,8 @@
 
 此项目可以帮助你在go-micro中使用nacos.
 
+使用nacos 命名空间,使用http访问微服务
+
 Nacos:https://nacos.io/en-us/
 
 Go-Micro:https://github.com/micro/go-micro

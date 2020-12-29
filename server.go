@@ -3,11 +3,22 @@ package main
 import (
 	"context"
 	helloworld "go-micro-nacos-demo/proto"
+	"strconv"
 
+	nacos "github.com/liangzibo/go-plugins-micro-registry-nacos/v2"
 	"github.com/micro/go-micro/v2"
 	"github.com/micro/go-micro/v2/logger"
 	"github.com/micro/go-micro/v2/registry"
-	nacos "github.com/liangzibo/go-plugins-micro-registry-nacos/v2"
+)
+
+const (
+	NamespaceId = "9d5d3937-27a6-45a4-b300-e30dc3656a90"
+	NacosHost   = "192.168.0.254"
+	NacosPort   = 8848
+	//Rpc 微服务
+	RpcServerName = "my.micro.service"
+	//http 微服务
+	httpServerName = "go.micro.web.echo"
 )
 
 type Helloworld struct{}
@@ -18,16 +29,16 @@ func (e *Helloworld) Hello(ctx context.Context, req *helloworld.HelloRequest, rs
 	return nil
 }
 func main() {
-	addrs := make([]string, 1)
-	addrs[0] = "console.nacos.io:80"
 	//命名空间
-	nacos.SetNamespaceId("9d5d3937-27a6-45a4-b300-e30dc3656a90")
+	nacos.SetNamespaceId(NamespaceId)
 	registry := nacos.NewRegistry(func(options *registry.Options) {
-		options.Addrs = addrs
+		options.Addrs = []string{NacosHost + ":" + strconv.Itoa(NacosPort)}
 	})
 	service := micro.NewService(
 		// Set service name
-		micro.Name("my.micro.service"),
+		micro.Name(RpcServerName),
+		micro.Address(":8070"),
+		micro.Version("0.0.1"),
 		// Set service registry
 		micro.Registry(registry),
 	)
